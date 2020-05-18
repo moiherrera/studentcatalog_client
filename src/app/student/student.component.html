@@ -1,17 +1,27 @@
 <h1>Welcome to Student Catalog</h1>
 <div>
+  <form>
+    Enter First Name: <input type = "text" [(ngModel)] = "student.firstName" name ="firstName"/> <br/>
+    Enter Last Name: <input type = "text" [(ngModel)] = "student.lastName" name ="lastName"/> <br/>
+    Enter SSN: <input type = "text" [(ngModel)] = "student.ssn" name ="ssn"/> <br/>
+    <button (click) = "addStudent()"> Add Student </button>
+  </form>
+</div>
+<div>
   <table border = "1">
     <tr>
+      <th style="display:none;">ID</th>
       <th>First Name</th>
       <th>Last Name</th>
       <th>SSN</th>
       <th>Actions</th>
     </tr>
     <tr *ngFor ="let student of students">
+      <td style="display:none;">{{student.id}}</td>
       <td>{{student.firstName}}</td>
       <td>{{student.lastName}}</td>
       <td>{{student.ssn}}</td>
-      <td>Edit | Delete</td>
+      <td><button (click) = "getStudentById(student.id)">Update</button> | <button (click) = "deleteStudent(student.id)">Delete</button></td>
     </tr>
   </table>
 </div>
