@@ -22,6 +22,11 @@ export class StudentService{
     let body = JSON.stringify(student);
     let headers = new Headers({'Content-Type': 'application/json'});
     let options = new RequestOptions({headers: headers});
+    if(student.id){
+      return this._httpService.put('http://localhost:8050/studentcatalog/api/student/'+student.id, body, options);
+    } else {
+      return this._httpService.post("http://localhost:8050/studentcatalog/api/student", body, options);
+    }
     return this._httpService.post("http://localhost:8050/studentcatalog/api/student", body, options);
   }
 
